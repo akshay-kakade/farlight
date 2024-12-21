@@ -65,7 +65,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="flex items-center underline text-sm font-light md:text-green-600"
             >
-              {dev.icon} <span className="ml-2">{dev.name}</span>
+              {dev.icon} <span className="ml-2 mr-5">{dev.name}</span>
             </a>
           ))}
         </div>
