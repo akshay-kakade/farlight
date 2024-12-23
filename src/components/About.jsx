@@ -38,8 +38,8 @@ const About = () => {
         />
 
         <div className="about-subtext">
-          <p> The Game of Games begins-your life, now an epic MORPG</p>
-          <p>Farlight unites every player form countless games and platform</p>
+        <p>The ultimate battle for survival begins your journey.</p>
+        <p>Farlight84 unites players.</p>
         </div>
       </div>
       <div className="h-dvh w-screen" id="clip">

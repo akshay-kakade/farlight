@@ -1,11 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Button from "./Button";
-import { TiLocationArrow } from "react-icons/ti";
 import { useWindowScroll } from "react-use";
 import gsap from "gsap";
+import { TfiGame } from "react-icons/tfi";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
-
+const navItems = ["Home", "Characters", "Event", "About", "Contact"];
 const Navbar = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [isIndicatorActive, setIsIndicatorActive] = useState(false);
@@ -84,23 +83,23 @@ const Navbar = () => {
   return (
     <div
       ref={navContainerRef}
-      className="fixed inset-x-0 top-4 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
+      className="fixed inset-x-0 top-0.5 z-50 h-16 border-none transition-all duration-700 sm:inset-x-6"
     >
       <header className="absolute top-1/2 w-full -translate-y-1/2">
-        <nav className="flex size-full items-center justify-between p-4">
+<nav className="flex size-full items-center justify-between p-4 rounded bg-white bg-opacity-20">
           <div className="flex items-center gap-7">
             <img src="/img/Logo2.png" alt="logo" className="w-10" />
 
-            <Button
-              id="product-button"
-              title="Products"
-              rightIcon={<TiLocationArrow />}
-              containerClass="bg-blue-100 md:flex hidden items-center justify-center gap-1"
-            />
+          <a>  <Button
+              id="More about developer"
+              title="Farlight Games"
+              rightIcon={<TfiGame />}
+              containerClass="bg-blue-100 md:flex hidden items-center justify-center gap-1"/>
+                 </a>
           </div>
 
           <div className="flex h-full items-center">
-            <div className="md:block hidden">
+            <div className="sm:block hidden hover:text-amber-200">
               {navItems.map((item) => (
                 <a
                   key={item}

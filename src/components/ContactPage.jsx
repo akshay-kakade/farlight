@@ -31,7 +31,7 @@ const ContactPage = () => {
 
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-lg bg-gray-800 p-8 rounded-lg shadow-lg"
+        className="w-full max-w-lg bg-gray-800 p-8 text-amber-300 rounded-lg shadow-lg"
       >
         <label className="block mb-4">
           Name:

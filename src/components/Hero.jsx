@@ -1,13 +1,31 @@
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import { TiDownload } from "react-icons/ti";
+import { TiDownload, TiHeadphones } from "react-icons/ti";
 import { useEffect, useRef, useState } from "react";
 import Button from "./Button";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
+   
+
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
+
+  const toggleAudio = () => {
+    if (nextVdRef.current) {
+      if (isAudioPlaying) {
+        nextVdRef.current.muted = true;
+        nextVdRef.current.pause();
+      } else {
+        nextVdRef.current.muted = false;
+        nextVdRef.current.play();
+      }
+      setIsAudioPlaying(!isAudioPlaying);
+    }
+  };
+
   const [currentIndex, setCurrentIndex] = useState(1);
   const [hasClicked, setHasClicked] = useState(false);
 
@@ -17,7 +35,7 @@ const Hero = () => {
   const totalVideos = 4;
   const nextVdRef = useRef(null);
 
-  const handleVideoLoad = () => {
+ const handleVideoLoad = () => {
     setLoadedVideos((prev) => prev + 1);
   };
 
@@ -81,7 +99,7 @@ const Hero = () => {
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
   return (
-    <div id="nexus" className="relative h-dvh w-screen overflow-x-hidden">
+    <div id="home" className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
         <div className="flex-center absolute z-[100] h-dvh w-screen overflow-hidden bg-violet-50">
           <div className="three-body">
@@ -113,12 +131,14 @@ const Hero = () => {
               />
             </div>
           </div>
+         
 
           <video
             ref={nextVdRef}
+            
             src={getVideoSrc(currentIndex)}
             loop
-            muted
+            muted={!isAudioPlaying}
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
@@ -129,24 +149,24 @@ const Hero = () => {
             )}
             autoPlay
             loop
-            muted
+            muted={!isAudioPlaying}
             className="absolute left-0 top-0 size-full object-cover object-center"
             onLoadedData={handleVideoLoad}
           />
         </div>
 
         <h1 className="special-font hero-heading absolute bottom-5 right-5 z-40 text-blue-75">
-          G<b>A</b>MING
+          <b>Lilith Games</b>
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
           <div className="mt-24 px-5 sm:px-10">
             <h1 className="special-font hero-heading text-blue-75">
-              redefi<b>n</b>e
+              <b>FARLIGHT 84</b>
             </h1>
 
-            <p className="mb-5 max-w-64 font-robert-regular text-blue-75">
-              Enter the Metagame Layer <br /> Unleash the Play Economy
+            <p className="mb-5 max-w-69 font-robert-regular text-blue-75">
+            Welcome to Farlight84 <br /> Experience the Ultimate Battle Royale <br /> Join the Fight, Survive, and Conquer!
             </p>
 
           <a href="https://farlight84.farlightgames.com/download/index.html" target="_blank">  <Button
@@ -156,6 +176,11 @@ const Hero = () => {
               leftIcon={<TiDownload />}
               containerClass="bg-yellow-300 flex-center gap-1"
             /></a>
+             <button
+  onClick={toggleAudio}
+  className="absolute bottom-5 left-5 z-50 text-white font-bold py-2 px-4 rounded-full hover:text-amber-200 transition duration-300 ease-in-out flex items-center space-x-2"
+> <span>{isAudioPlaying ? 'Pause Audio' : 'Play Audio'}</span> <TiHeadphones />
+</button>
           </div>
         </div>
       </div>
